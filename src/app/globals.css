@@ -1,96 +1,26 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 
 :root {
-  --background: #f3f6ff;
-  --foreground: #0d1424;
-  --surface: rgba(255, 255, 255, 0.84);
-  --surface-strong: #ffffff;
-  --surface-soft: #eaf0ff;
-  --border: rgba(167, 183, 219, 0.45);
-  --shadow: 0 14px 40px rgba(16, 30, 66, 0.09);
-}
-
-[data-theme="dark"] {
-  --background: #060912;
-  --foreground: #edf2ff;
-  --surface: rgba(17, 24, 39, 0.76);
-  --surface-strong: #121a2b;
-  --surface-soft: #1a2741;
-  --border: rgba(94, 118, 166, 0.4);
-  --shadow: 0 16px 46px rgba(0, 0, 0, 0.52);
+  --background: #ffffff;
+  --foreground: #171717;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  min-height: 100vh;
-  background:
-    radial-gradient(50rem 50rem at -10% 0%, #22d3ee20, transparent 52%),
-    radial-gradient(50rem 50rem at 110% 15%, #6366f120, transparent 56%),
-    var(--background);
+  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), sans-serif;
-}
-
-.panel {
-  background: linear-gradient(150deg, var(--surface), color-mix(in srgb, var(--surface), transparent 24%));
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
-}
-
-.display-title {
-  letter-spacing: -0.03em;
-  line-height: 0.98;
-}
-
-.reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 520ms ease, transform 520ms ease;
-}
-
-.reveal.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.step-enter {
-  animation: stepIn 360ms cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.lift {
-  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.lift:hover {
-  transform: translateY(-2px);
-}
-
-.soft-focus:focus-visible {
-  outline: 2px solid #22d3ee;
-  outline-offset: 2px;
-}
-
-.stagger > * {
-  animation: fadeStagger 500ms ease both;
-}
-
-.stagger > *:nth-child(1) { animation-delay: 40ms; }
-.stagger > *:nth-child(2) { animation-delay: 90ms; }
-.stagger > *:nth-child(3) { animation-delay: 140ms; }
-.stagger > *:nth-child(4) { animation-delay: 190ms; }
-
-@keyframes stepIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeStagger {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  font-family: Arial, Helvetica, sans-serif;
 }
