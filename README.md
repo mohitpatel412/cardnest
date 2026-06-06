@@ -18,3 +18,6 @@ Open [http://localhost:3000](http://localhost:3000).
 - `npm run build` - create production build
 - `npm run start` - run production server
 - `npm run lint` - run lint checks
+- `npm run acquire:raw` - collect raw issuer artifacts into `data/raw_sources/`
+- `npm run scrape:raw` - alias for `npm run acquire:raw`
+- `npm run normalize:cards` - legacy normalization script, to be replaced in later phases

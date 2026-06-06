@@ -6,9 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "acquire:raw": "node scripts/scrape-credit-cards.mjs",
+    "scrape:raw": "npm run acquire:raw",
+    "normalize:cards": "node scripts/normalize-credit-cards.mjs",
+    "scrape:cards": "npm run acquire:raw"
   },
   "dependencies": {
+    "cheerio": "^1.2.0",
     "next": "16.2.6",
     "react": "19.2.4",
     "react-dom": "19.2.4"

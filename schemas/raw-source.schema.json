@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cardnest.local/schemas/raw-source.schema.json",
+  "title": "Raw Source Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "sourceId",
+    "crawlId",
+    "issuerId",
+    "issuerName",
+    "strategy",
+    "sourceType",
+    "url",
+    "method",
+    "ok",
+    "checksumSha256",
+    "fetchedAt",
+    "storage",
+    "metadata"
+  ],
+  "properties": {
+    "sourceId": { "type": "string" },
+    "crawlId": { "type": "string" },
+    "issuerId": { "type": "string" },
+    "issuerName": { "type": "string" },
+    "strategy": { "type": "string", "enum": ["fetch", "playwright"] },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "listing_page",
+        "detail_page",
+        "faq_page",
+        "fees_page",
+        "terms_page",
+        "rewards_page",
+        "lounge_page",
+        "mitc_pdf",
+        "fees_pdf",
+        "rewards_pdf",
+        "lounge_pdf",
+        "faq_pdf",
+        "generic_pdf",
+        "api_response",
+        "unknown"
+      ]
+    },
+    "parentSourceId": { "type": ["string", "null"] },
+    "cardKey": { "type": ["string", "null"] },
+    "url": { "type": "string" },
+    "canonicalUrl": { "type": ["string", "null"] },
+    "discoveredFromUrl": { "type": ["string", "null"] },
+    "method": { "type": "string" },
+    "status": { "type": ["integer", "null"] },
+    "ok": { "type": "boolean" },
+    "contentType": { "type": ["string", "null"] },
+    "contentLength": { "type": ["integer", "null"] },
+    "checksumSha256": { "type": "string" },
+    "fetchedAt": { "type": "string", "format": "date-time" },
+    "storage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["blobPath"],
+      "properties": {
+        "blobPath": { "type": "string" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "title": { "type": "string" },
+        "linkText": { "type": "string" },
+        "discoveredPdfLinks": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "discoveredHtmlLinks": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "discoveredApiEndpoints": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    }
+  }
+}
